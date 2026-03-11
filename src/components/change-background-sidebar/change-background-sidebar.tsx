@@ -20,7 +20,7 @@ export function ChangeBackgroundSidebar() {
         <div className="flex-1 overflow-y-auto px-5 pb-8 pt-8">
           <SheetHeader className="pb-5">
             <div className="flex items-center justify-between">
-              <SheetTitle className="text-[22px] font-bold leading-[120%]">
+              <SheetTitle className="text-[22px] font-bold">
                 Change background
               </SheetTitle>
               <button

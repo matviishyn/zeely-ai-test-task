@@ -14,13 +14,13 @@ export const PromptEditor = () => {
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="Describe the background you want..."
-        className="min-h-[140px] w-full resize-none rounded-t-xl font-medium border border-gray-light border-b-0 px-4 py-4 text-sm leading-relaxed outline-none"
+        className="min-h-[140px] w-full resize-none rounded-t-xl font-medium border border-gray-light border-b-0 px-4 py-4 text-sm outline-none"
       />
       <div className="flex items-center justify-between rounded-b-xl border border-t-0 border-gray-light px-4 py-3">
         <button
           type="button"
           onClick={regeneratePrompt}
-          className="flex items-center gap-2 text-xs font-semibold leading-[120%] text-black transition-colors cursor-pointer"
+          className="flex items-center gap-2 text-xs font-semiboldtext-black transition-colors cursor-pointer"
         >
           <SparklesIcon />
           Regenerate

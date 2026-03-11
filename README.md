@@ -1,54 +1,133 @@
-# React + TypeScript + Vite
+# Zeely AI — Avatar Background Generation Sidebar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application implementing the **Change Background** sidebar flow from the Zeely AI test task. Users can open a slide-in panel, enter a text prompt, and simulate AI-powered avatar background generation with real-time progress feedback.
 
-Currently, two official plugins are available:
+## Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Click **"Change background"** to open the sidebar, type or regenerate a prompt, then hit **"Generate BG for 1 credit"** to watch a simulated background generation with a circular progress indicator. Once complete, the result appears as a selectable thumbnail in the backgrounds grid.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React 19](https://react.dev/) — UI framework
+- [TypeScript 5.8](https://www.typescriptlang.org/) — static typing
+- [Vite 6](https://vite.dev/) — build tool & dev server
+- [Tailwind CSS 4](https://tailwindcss.com/) — utility-first styling (via `@tailwindcss/vite`)
+- [Base UI (React)](https://base-ui.com/) — headless UI primitives (Dialog, Button)
+- [Zustand 5](https://zustand.docs.pmnd.rs/) — lightweight state management
+- [Lucide React](https://lucide.dev/) — icon library
+- [ESLint 9](https://eslint.org/) — linting (flat config)
+- [Prettier](https://prettier.io/) — code formatting
+- [Husky](https://typicode.github.io/husky/) + [lint-staged](https://github.com/lint-staged/lint-staged) — pre-commit quality gate
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Prerequisites
+
+- **Node.js** >= 20
+- **npm** >= 10
+
+## Getting Started
+
+```bash
+# 1. Clone the repository
+git clone <repo-url>
+cd zeely-ai-test-task
+
+# 2. Install dependencies (also sets up Husky git hooks via the `prepare` script)
+npm install
+
+# 3. Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Available Scripts
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev            # Start Vite dev server with HMR
+npm run build          # Type-check with tsc and build for production
+npm run preview        # Preview the production build locally
+npm run lint           # Run ESLint on the entire project
+npm run lint:fix       # Run ESLint with auto-fix
+npm run format         # Format all files with Prettier
+npm run format:check   # Check formatting without writing
+```
+
+## Project Structure
+
+```
+src/
+├── assets/
+│   ├── fonts/                        # Italian Plate No2 Expanded (.ttf, 4 weights)
+│   └── icons/                        # Custom SVG icon components
+│       ├── sparkles.tsx
+│       └── sparkles-generate.tsx
+├── components/
+│   ├── change-background-sidebar/    # Main feature
+│   │   ├── change-background-sidebar.tsx   # Sidebar shell (Sheet wrapper)
+│   │   ├── prompt-editor.tsx               # Textarea + Regenerate / Undo / Redo
+│   │   ├── generate-button.tsx             # "Generate BG for 1 credit" CTA
+│   │   ├── generating-thumbnail.tsx        # Progress ring during generation
+│   │   ├── completed-thumbnail.tsx         # Selectable image thumbnail
+│   │   ├── constants.ts                    # Shared thumbnail classes
+│   │   └── index.ts                        # Barrel export
+│   └── ui/                           # Reusable UI primitives
+│       ├── button.tsx                      # Button (Base UI wrapper)
+│       ├── sheet.tsx                       # Slide-in dialog panel
+│       └── index.ts
+├── data/
+│   └── mock-backgrounds.ts           # Preset prompts & placeholder images
+├── lib/
+│   └── utils.ts                      # cn() helper (clsx + tailwind-merge)
+├── store/
+│   └── use-background-store.ts       # Zustand store (state + actions)
+├── types/
+│   └── background.ts                 # BackgroundItem type definitions
+├── App.tsx                            # Root component
+├── main.tsx                           # Entry point
+└── index.css                          # Tailwind imports, @font-face, theme tokens
+```
+
+## Architecture
+
+### State Management
+
+All sidebar state lives in a single Zustand store (`useBackgroundStore`):
+
+- **`isOpen`** — sidebar visibility
+- **`prompt` / `promptIndex`** — current prompt text and undo/redo cursor
+- **`backgrounds`** — array of `GeneratingBackground | CompletedBackground` items
+- **`selectedId`** — currently selected background
+
+### Background Generation Flow
+
+1. User clicks **"Generate BG for 1 credit"**
+2. A `GeneratingBackground` item is prepended to the grid (0% progress)
+3. A `setInterval` ticks progress by 5% every 250ms (~5 seconds total)
+4. The `GeneratingThumbnail` component renders an animated SVG circular progress ring
+5. At 100%, the item is replaced with a `CompletedBackground` carrying a random image URL
+6. Closing the sidebar clears all running intervals and removes in-progress items
+
+### UI Components
+
+The sidebar is built as a composable `Sheet` component (slide-in dialog from the right) using `@base-ui/react Dialog` primitives. All styling is done with Tailwind CSS utility classes; no custom CSS beyond the base layer theme configuration.
+
+## Code Quality
+
+A pre-commit hook enforced by **Husky** runs **lint-staged** on every commit:
+
+- `*.{ts,tsx}` files are linted with ESLint (`--fix`) and formatted with Prettier
+- `*.{json,md,css,html}` files are formatted with Prettier
+
+ESLint is configured with `eslint-config-prettier` to avoid rule conflicts.
+
+### Prettier Config
+
+```json
+{
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "printWidth": 80
+}
 ```
