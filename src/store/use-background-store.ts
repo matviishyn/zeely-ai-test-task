@@ -48,14 +48,18 @@ const stopInterval = (id: string) => {
 }
 
 const clearAllIntervals = () => {
-  activeIntervals.forEach((_, id) => stopInterval(id))
+  activeIntervals.forEach((interval) => clearInterval(interval))
+  activeIntervals.clear()
 }
 
 const getRandomImage = () =>
   config.avatarImages[Math.floor(Math.random() * config.avatarImages.length)]
 
-const formatTimeLeft = (seconds: number): string =>
-  seconds > 60 ? `${Math.ceil(seconds / 60)} minute left` : `${seconds}s left`
+const formatTimeLeft = (seconds: number): string => {
+  if (seconds <= 60) return `${seconds}s left`
+  const minutes = Math.ceil(seconds / 60)
+  return `${minutes} ${minutes === 1 ? 'minute' : 'minutes'} left`
+}
 
 const replaceBackground = (
   backgrounds: BackgroundItem[],
@@ -111,7 +115,7 @@ export const useBackgroundStore = create<BackgroundStore>((set, get) => ({
   prompt: config.prompts[0],
   promptIndex: 0,
   backgrounds: config.initialBackgrounds,
-  selectedId: '1',
+  selectedId: config.initialBackgrounds[0]?.id ?? null,
 
   open: () => set({ isOpen: true }),
 
@@ -156,7 +160,9 @@ export const useBackgroundStore = create<BackgroundStore>((set, get) => ({
       id: newId,
       status: 'generating',
       progress: 0,
-      timeLeft: '1 minute left',
+      timeLeft: formatTimeLeft(
+        Math.ceil((100 / PROGRESS_STEP) * (TICK_MS / 1000)),
+      ),
     }
 
     set((state) => ({

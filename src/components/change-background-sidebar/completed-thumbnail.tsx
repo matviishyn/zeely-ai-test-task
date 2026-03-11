@@ -1,3 +1,4 @@
+import type { KeyboardEvent } from 'react'
 import { cn } from '@/lib/utils'
 import type { CompletedBackground } from '@/types/background'
 import { THUMBNAIL_BASE } from './constants'
@@ -13,7 +14,7 @@ export const CompletedThumbnail = ({
   isSelected,
   onSelect,
 }: CompletedThumbnailProps) => {
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       onSelect()

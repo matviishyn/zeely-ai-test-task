@@ -131,3 +131,9 @@ ESLint is configured with `eslint-config-prettier` to avoid rule conflicts.
   "printWidth": 80
 }
 ```
+
+## Deployment
+
+The project is deployed on [Vercel](https://vercel.com/) and ships automatically on every push to `main` via a GitHub Actions workflow (`.github/workflows/deploy.yml`).
+
+The pipeline runs lint, build (with TypeScript type-check), and deploys to Vercel production.

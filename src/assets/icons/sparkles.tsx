@@ -1,10 +1,11 @@
-export function SparklesIcon({ className }: { className?: string }) {
+export const SparklesIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       width="18"
       height="18"
       viewBox="0 0 18 18"
       fill="none"
+      aria-hidden="true"
       className={className}
     >
       <g clipPath="url(#sparkles-clip)">

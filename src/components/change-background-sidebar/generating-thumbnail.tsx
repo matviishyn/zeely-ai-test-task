@@ -51,7 +51,7 @@ export const GeneratingThumbnail = ({ item }: GeneratingThumbnailProps) => {
           {item.progress}%
         </span>
       </div>
-      <span className="absolute bottom-0 left-0 right-0 pb-2 text-center text-[12px] font-semibold  text-white">
+      <span className="absolute bottom-0 left-0 right-0 pb-2 text-center text-[12px] font-semibold text-white">
         {item.timeLeft}
       </span>
     </div>

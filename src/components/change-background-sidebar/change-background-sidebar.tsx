@@ -9,9 +9,12 @@ import { GenerateButton } from './generate-button'
 import { GeneratingThumbnail } from './generating-thumbnail'
 import { CompletedThumbnail } from './completed-thumbnail'
 
-export function ChangeBackgroundSidebar() {
-  const { isOpen, close, backgrounds, selectedId, selectBackground } =
-    useBackgroundStore()
+export const ChangeBackgroundSidebar = () => {
+  const isOpen = useBackgroundStore((s) => s.isOpen)
+  const close = useBackgroundStore((s) => s.close)
+  const backgrounds = useBackgroundStore((s) => s.backgrounds)
+  const selectedId = useBackgroundStore((s) => s.selectedId)
+  const selectBackground = useBackgroundStore((s) => s.selectBackground)
   useBackgroundCleanup()
 
   return (

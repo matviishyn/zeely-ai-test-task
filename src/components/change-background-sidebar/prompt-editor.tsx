@@ -3,8 +3,11 @@ import { SparklesIcon } from '@/assets/icons/sparkles'
 import { useBackgroundStore } from '@/store/use-background-store'
 
 export const PromptEditor = () => {
-  const { prompt, setPrompt, regeneratePrompt, undo, redo } =
-    useBackgroundStore()
+  const prompt = useBackgroundStore((s) => s.prompt)
+  const setPrompt = useBackgroundStore((s) => s.setPrompt)
+  const regeneratePrompt = useBackgroundStore((s) => s.regeneratePrompt)
+  const undo = useBackgroundStore((s) => s.undo)
+  const redo = useBackgroundStore((s) => s.redo)
 
   return (
     <div className="flex flex-col">

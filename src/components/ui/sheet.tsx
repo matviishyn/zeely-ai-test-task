@@ -7,15 +7,15 @@ const SHEET_TRANSITION_DURATION = 'duration-200'
 const SHEET_TRANSITION_EASING = 'ease-in-out'
 const BACKDROP_TRANSITION_DURATION = 'duration-150'
 
-function Sheet({ ...props }: SheetPrimitive.Root.Props) {
+const Sheet = (props: SheetPrimitive.Root.Props) => {
   return <SheetPrimitive.Root {...props} />
 }
 
-function SheetContent({
+const SheetContent = ({
   className,
   children,
   ...props
-}: SheetPrimitive.Popup.Props) {
+}: SheetPrimitive.Popup.Props) => {
   return (
     <SheetPrimitive.Portal>
       <SheetPrimitive.Backdrop
@@ -42,11 +42,11 @@ function SheetContent({
   )
 }
 
-function SheetHeader({ className, ...props }: React.ComponentProps<'div'>) {
+const SheetHeader = ({ className, ...props }: React.ComponentProps<'div'>) => {
   return <div className={className} {...props} />
 }
 
-function SheetTitle({ className, ...props }: SheetPrimitive.Title.Props) {
+const SheetTitle = ({ className, ...props }: SheetPrimitive.Title.Props) => {
   return <SheetPrimitive.Title className={className} {...props} />
 }
 
