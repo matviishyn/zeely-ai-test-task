@@ -1,8 +1,8 @@
-import { useBackgroundStore } from '@/store/use-background-store'
+import { useChangeBackgroundSidebar } from '@/store/use-change-background-sidebar'
 import { ChangeBackgroundSidebar } from '@/components/change-background-sidebar'
 
 export const App = () => {
-  const open = useBackgroundStore((s) => s.open)
+  const open = useChangeBackgroundSidebar((s) => s.open)
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center">

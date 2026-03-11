@@ -1,10 +1,10 @@
 import { SparklesGenerateIcon } from '@/assets/icons/sparkles-generate'
 import { Button } from '@/components/ui'
-import { useBackgroundStore } from '@/store/use-background-store'
+import { useChangeBackgroundSidebar } from '@/store/use-change-background-sidebar'
 
 export const GenerateButton = () => {
-  const generate = useBackgroundStore((s) => s.generate)
-  const isGenerating = useBackgroundStore((s) =>
+  const generate = useChangeBackgroundSidebar((s) => s.generate)
+  const isGenerating = useChangeBackgroundSidebar((s) =>
     s.backgrounds.some((b) => b.status === 'generating'),
   )
 

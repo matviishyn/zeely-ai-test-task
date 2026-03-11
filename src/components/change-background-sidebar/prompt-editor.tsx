@@ -1,13 +1,13 @@
 import { Undo2, Redo2 } from 'lucide-react'
 import { SparklesIcon } from '@/assets/icons/sparkles'
-import { useBackgroundStore } from '@/store/use-background-store'
+import { useChangeBackgroundSidebar } from '@/store/use-change-background-sidebar'
 
 export const PromptEditor = () => {
-  const prompt = useBackgroundStore((s) => s.prompt)
-  const setPrompt = useBackgroundStore((s) => s.setPrompt)
-  const regeneratePrompt = useBackgroundStore((s) => s.regeneratePrompt)
-  const undo = useBackgroundStore((s) => s.undo)
-  const redo = useBackgroundStore((s) => s.redo)
+  const prompt = useChangeBackgroundSidebar((s) => s.prompt)
+  const setPrompt = useChangeBackgroundSidebar((s) => s.setPrompt)
+  const regeneratePrompt = useChangeBackgroundSidebar((s) => s.regeneratePrompt)
+  const undo = useChangeBackgroundSidebar((s) => s.undo)
+  const redo = useChangeBackgroundSidebar((s) => s.redo)
 
   return (
     <div className="flex flex-col">

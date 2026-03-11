@@ -1,21 +1,17 @@
 import { X } from 'lucide-react'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui'
-import {
-  useBackgroundStore,
-  useBackgroundCleanup,
-} from '@/store/use-background-store'
+import { useChangeBackgroundSidebar } from '@/store/use-change-background-sidebar'
 import { PromptEditor } from './prompt-editor'
 import { GenerateButton } from './generate-button'
 import { GeneratingThumbnail } from './generating-thumbnail'
 import { CompletedThumbnail } from './completed-thumbnail'
 
 export const ChangeBackgroundSidebar = () => {
-  const isOpen = useBackgroundStore((s) => s.isOpen)
-  const close = useBackgroundStore((s) => s.close)
-  const backgrounds = useBackgroundStore((s) => s.backgrounds)
-  const selectedId = useBackgroundStore((s) => s.selectedId)
-  const selectBackground = useBackgroundStore((s) => s.selectBackground)
-  useBackgroundCleanup()
+  const isOpen = useChangeBackgroundSidebar((s) => s.isOpen)
+  const close = useChangeBackgroundSidebar((s) => s.close)
+  const backgrounds = useChangeBackgroundSidebar((s) => s.backgrounds)
+  const selectedId = useChangeBackgroundSidebar((s) => s.selectedId)
+  const selectBackground = useChangeBackgroundSidebar((s) => s.selectBackground)
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && close()}>
