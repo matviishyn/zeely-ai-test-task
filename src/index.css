@@ -1,57 +1,52 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
-  font-family: "Italian Plate No2 Expanded";
-  src: url("./assets/fonts/Italian Plate No2 Expanded.ttf") format("truetype");
+  font-family: 'Italian Plate No2 Expanded';
+  src: url('./assets/fonts/Italian Plate No2 Expanded.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Italian Plate No2 Expanded";
-  src: url("./assets/fonts/Italian Plate No2 Expanded Medium.ttf") format("truetype");
+  font-family: 'Italian Plate No2 Expanded';
+  src: url('./assets/fonts/Italian Plate No2 Expanded Medium.ttf')
+    format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Italian Plate No2 Expanded";
-  src: url("./assets/fonts/Italian Plate No2 Expanded Demibold.ttf") format("truetype");
+  font-family: 'Italian Plate No2 Expanded';
+  src: url('./assets/fonts/Italian Plate No2 Expanded Demibold.ttf')
+    format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Italian Plate No2 Expanded";
-  src: url("./assets/fonts/Italian Plate No2 Expanded Bold.ttf") format("truetype");
+  font-family: 'Italian Plate No2 Expanded';
+  src: url('./assets/fonts/Italian Plate No2 Expanded Bold.ttf')
+    format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @theme {
-  --font-sans: "Italian Plate No2 Expanded", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    'Italian Plate No2 Expanded', ui-sans-serif, system-ui, sans-serif;
 
-  --color-black: #000000;
-  --color-white: #FFFFFF;
-  --color-green: #5BF0A5;
-  --color-gray: #CAD4DD;
-  --color-gray-light: #F2F4F6;
+  --color-gray: #cad4dd;
+  --color-gray-light: #f2f4f6;
 }
 
 @layer base {
-  * {
-    @apply border-gray-light;
-  }
   body {
-    @apply antialiased bg-white text-black;
-    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
-  }
-  html {
-    @apply font-sans;
   }
 }

@@ -20,7 +20,7 @@ export const PromptEditor = () => {
         <button
           type="button"
           onClick={regeneratePrompt}
-          className="flex items-center gap-2 text-xs font-semiboldtext-black transition-colors cursor-pointer"
+          className="flex items-center gap-1 text-xs font-semibold text-black transition-colors cursor-pointer"
         >
           <SparklesIcon />
           Regenerate
