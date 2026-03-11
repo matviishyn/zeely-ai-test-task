@@ -19,8 +19,8 @@ export const ChangeBackgroundSidebar = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && close()}>
-      <SheetContent className="w-[400px] max-w-[400px] p-0 flex flex-col">
-        <div className="flex-1 overflow-y-auto px-5 pb-8 pt-8">
+      <SheetContent className="w-[400px]">
+        <div className="flex-1 overflow-y-auto px-5 py-8">
           <SheetHeader className="pb-5">
             <div className="flex items-center justify-between">
               <SheetTitle className="text-[22px] font-bold">
@@ -30,9 +30,9 @@ export const ChangeBackgroundSidebar = () => {
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="h-8 w-8 rounded-full flex items-center justify-center hover:bg-gray-light transition-colors cursor-pointer"
+                className="size-8 rounded-full flex items-center justify-center hover:bg-gray-light transition-colors cursor-pointer"
               >
-                <X className="h-6 w-6" />
+                <X className="size-6" />
               </button>
             </div>
           </SheetHeader>

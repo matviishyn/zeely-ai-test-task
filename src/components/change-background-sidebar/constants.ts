@@ -1,1 +1,1 @@
-export const THUMBNAIL_BASE = 'relative w-[112px] h-[198px] rounded-[16px]'
+export const THUMBNAIL_BASE = 'relative w-28 h-[198px] rounded-2xl'

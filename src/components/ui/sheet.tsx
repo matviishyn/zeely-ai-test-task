@@ -27,7 +27,7 @@ const SheetContent = ({
       />
       <SheetPrimitive.Popup
         className={cn(
-          'fixed inset-y-0 right-0 z-50 flex h-full flex-col bg-white shadow-lg transition',
+          'fixed inset-y-0 right-0 z-50 flex flex-col bg-white shadow-lg transition',
           SHEET_TRANSITION_DURATION,
           SHEET_TRANSITION_EASING,
           'data-ending-style:opacity-0 data-ending-style:translate-x-[2.5rem]',

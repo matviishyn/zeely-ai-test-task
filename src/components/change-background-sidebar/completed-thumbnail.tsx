@@ -39,7 +39,7 @@ export const CompletedThumbnail = ({
         src={item.imageUrl}
         alt="Generated background"
         loading="lazy"
-        className="h-full w-full rounded-[16px] object-cover"
+        className="size-full rounded-2xl object-cover"
       />
       {item.isDefault && (
         <span className="absolute top-2 left-2 rounded-[5px] text-[10px] font-bold uppercase bg-white text-[#404040] pt-[5px] pb-[3px] px-[6px] border border-black/5">
