@@ -1,5 +1,4 @@
 import type { BackgroundItem } from '@/types/background'
-import { MOCK_AVATAR_IMAGES } from '@/data/mock-backgrounds'
 
 const PROGRESS_STEP = 5
 const TICK_MS = 250
@@ -7,7 +6,7 @@ const TICK_MS = 250
 const activeIntervals = new Map<string, ReturnType<typeof setInterval>>()
 
 const getRandomImage = () =>
-  MOCK_AVATAR_IMAGES[Math.floor(Math.random() * MOCK_AVATAR_IMAGES.length)]
+  `https://picsum.photos/seed/${crypto.randomUUID()}/300/400`
 
 export const formatTimeLeft = (seconds: number): string => {
   if (seconds <= 60) return `${seconds}s left`

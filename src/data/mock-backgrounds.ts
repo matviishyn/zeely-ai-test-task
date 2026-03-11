@@ -8,25 +8,25 @@ export const MOCK_PROMPTS = [
   'Minimalist studio setup with soft gradient lighting, clean white backdrop, and subtle shadow play for a professional look.',
 ]
 
-export const MOCK_AVATAR_IMAGES = [
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=400&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=400&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=400&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=400&fit=crop&crop=face',
+export const MOCK_BACKGROUND_IMAGES = [
+  'https://picsum.photos/seed/bg-1/300/400',
+  'https://picsum.photos/seed/bg-2/300/400',
+  'https://picsum.photos/seed/bg-3/300/400',
+  'https://picsum.photos/seed/bg-4/300/400',
+  'https://picsum.photos/seed/bg-5/300/400',
+  'https://picsum.photos/seed/bg-6/300/400',
 ]
 
 export const INITIAL_BACKGROUNDS: BackgroundItem[] = [
   {
     id: '1',
-    imageUrl: MOCK_AVATAR_IMAGES[0],
+    imageUrl: MOCK_BACKGROUND_IMAGES[0],
     status: 'completed',
     isDefault: true,
   },
-  { id: '2', imageUrl: MOCK_AVATAR_IMAGES[1], status: 'completed' },
-  { id: '3', imageUrl: MOCK_AVATAR_IMAGES[2], status: 'completed' },
-  { id: '4', imageUrl: MOCK_AVATAR_IMAGES[3], status: 'completed' },
-  { id: '5', imageUrl: MOCK_AVATAR_IMAGES[4], status: 'completed' },
-  { id: '6', imageUrl: MOCK_AVATAR_IMAGES[5], status: 'completed' },
+  { id: '2', imageUrl: MOCK_BACKGROUND_IMAGES[1], status: 'completed' },
+  { id: '3', imageUrl: MOCK_BACKGROUND_IMAGES[2], status: 'completed' },
+  { id: '4', imageUrl: MOCK_BACKGROUND_IMAGES[3], status: 'completed' },
+  { id: '5', imageUrl: MOCK_BACKGROUND_IMAGES[4], status: 'completed' },
+  { id: '6', imageUrl: MOCK_BACKGROUND_IMAGES[5], status: 'completed' },
 ]
